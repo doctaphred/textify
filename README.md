@@ -55,4 +55,4 @@ $ python3 textify.py great-success.png --invert | lolcat
 
 ![Advanced Usage](Screenshot 2017-01-19 20.06.02.png)
 
-ees ver nice!
+eez ver nice!
