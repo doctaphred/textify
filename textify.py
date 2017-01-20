@@ -1,10 +1,20 @@
-from shutil import get_terminal_size
+import subprocess
 
 import numpy as np
 from PIL import Image
 
 
 DEFAULT_ALPHABET = ' .:-=+*#%@'
+
+
+def get_terminal_size():
+    """Get the current columns and lines of the terminal.
+
+    Avoid shutil.get_terminal_size(), as it doesn't work as expected
+    with pipes.
+    """
+    lines, columns = subprocess.check_output(['stty', 'size']).split()
+    return int(columns), int(lines)
 
 
 def textify(path, line_height=7/4, brightness=1, invert=True,
