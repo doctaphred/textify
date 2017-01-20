@@ -17,17 +17,17 @@ def get_terminal_size():
     return int(columns), int(lines)
 
 
-def textify(path, line_height=7/4, brightness=1, invert=True,
+def textify(img, columns, *, line_height=7/4, brightness=1, invert=True,
             alphabet=DEFAULT_ALPHABET):
     """Convert an image to text.
 
+    img: a PIL image
+    columns: output width, in characters
     line_height: height/width ratio of a character
+    brightness: adjust if necessary
+    invert: set True for light text on dark backgrounds
     alphabet: characters to use, ordered from darkest to lightest
     """
-    img = Image.open(path)
-
-    # Scale the image to take up the whole terminal width
-    columns, _ = get_terminal_size()
     lines = round(img.size[1] / img.size[0] * columns / line_height)
     img = img.resize((columns, lines), resample=Image.BICUBIC)
 
@@ -54,5 +54,11 @@ def textify(path, line_height=7/4, brightness=1, invert=True,
 
 if __name__ == '__main__':
     import sys
+
+    path = sys.argv[1]
     invert = '--invert' in sys.argv
-    print(textify(sys.argv[1], invert=invert))
+
+    img = Image.open(path)
+    columns, _ = get_terminal_size()
+    text = textify(img, columns, invert=invert)
+    print(text)
