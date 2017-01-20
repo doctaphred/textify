@@ -44,4 +44,5 @@ def textify(path, line_height=7/4, brightness=1, invert=True,
 
 if __name__ == '__main__':
     import sys
-    print(textify(sys.argv[1]))
+    invert = '--invert' in sys.argv
+    print(textify(sys.argv[1], invert=invert))
