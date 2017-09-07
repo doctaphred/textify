@@ -33,6 +33,7 @@ def textify(img, columns, *, line_height=7/4, brightness=1, invert=True,
 
     # Convert to grayscale by combining the RGB values of each pixel
     pixels = np.sum(np.asarray(img), axis=2)
+
     # Smush the pixel values between 0 and 1
     pixels = (pixels - pixels.min()) / pixels.max()
     if invert:
@@ -49,7 +50,7 @@ def textify(img, columns, *, line_height=7/4, brightness=1, invert=True,
     chars = np.asarray(list(alphabet))[pixels]
 
     # Convert the 2D array to a single string
-    return '\n'.join((''.join(row) for row in chars))
+    return '\n'.join(''.join(row) for row in chars)
 
 
 if __name__ == '__main__':
