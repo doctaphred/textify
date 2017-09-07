@@ -53,7 +53,7 @@ $ python3 textify.py great-success.png
 $ python3 textify.py great-success.png --invert | lolcat
 ```
 
-![Advanced Usage](Screenshot 2017-01-19 20.06.02.png)
+![Advanced Usage](Screenshot%202017-01-19%2020.06.02.png)
 
 eez ver nice!
 
